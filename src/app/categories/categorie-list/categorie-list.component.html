@@ -1,0 +1,18 @@
+
+<mat-spinner *ngIf="isLoading" ></mat-spinner>
+<mat-accordion multi="true" *ngIf="categories.length > 0 && !isLoading ">
+    <mat-expansion-panel *ngFor="let categorie of categories" >
+        <mat-expansion-panel-header >
+            {{categorie.title}}
+         </mat-expansion-panel-header>
+         <p>{{categorie.content}} </p>
+         
+         <mat-action-row>
+            <button mat-button color="primary"  [routerLink]="['/edit',categorie.id]"> Edit </button>
+            <button mat-button color="warn" (click)="onDelete(categorie.id)" > Delete </button>
+          
+                </mat-action-row>
+         </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="categories.length <= 0 && !isLoading  "> No posts added yet </p>
+
